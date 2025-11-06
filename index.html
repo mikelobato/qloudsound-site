@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QloudSound — The Intelligent Music Factory</title>
   <meta name="description" content="QloudSound is a post-studio, AI-driven music factory. We design sound — not just compose it." />
+  <meta name="keywords" content="QloudSound, AI music studio, music production, sonic branding, audio design, generative music, mastering" />
+  <meta name="author" content="QloudSound" />
+  <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#050506" />
+  <link rel="canonical" href="https://qloudsound.com/" />
+  <link rel="alternate" hreflang="en" href="https://qloudsound.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -46,6 +51,17 @@
     }
     .ring-ql{box-shadow:0 0 0 2px var(--ring);}
     .title{font-family:'Space Grotesk',Inter,system-ui,sans-serif;}
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
     .tag{
       display:inline-flex;
       align-items:center;
@@ -65,6 +81,37 @@
       background-size:220% 100%;
       animation:shine 3s linear infinite;
     }
+    .social-links{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+    .social-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      border:1px solid rgba(37,146,208,.35);
+      background:linear-gradient(140deg, rgba(37,146,208,.25), rgba(37,146,208,.05));
+      color:var(--ink);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .social-link:hover{
+      transform:translateY(-2px) scale(1.05);
+      border-color:rgba(37,146,208,.8);
+      box-shadow:0 10px 30px -12px rgba(37,146,208,.8);
+    }
+    .social-icon{
+      display:inline-flex;
+      width:20px;
+      height:20px;
+    }
+    .social-icon svg{
+      width:100%;
+      height:100%;
+    }
     @keyframes shine{from{background-position:220% 0} to{background-position:-220% 0}}
     html{scroll-behavior:smooth}
   </style>
@@ -72,8 +119,17 @@
   <meta property="og:title" content="QloudSound — The Intelligent Music Factory" />
   <meta property="og:description" content="Post-studio, AI-driven. We design sound — not just compose it." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://qloudsound.com/" />
   <meta property="og:image" content="/og-qloudsound.png" />
+  <meta property="og:image:alt" content="QloudSound logo alongside abstract audio waveforms" />
+  <meta property="og:site_name" content="QloudSound" />
+  <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QloudSound — The Intelligent Music Factory" />
+  <meta name="twitter:description" content="AI-native music production, mastering, and catalog automation built for visionary brands." />
+  <meta name="twitter:image" content="https://qloudsound.com/og-qloudsound.png" />
+  <meta name="twitter:image:alt" content="QloudSound logo alongside abstract audio waveforms" />
+  <meta name="twitter:site" content="@qloudsound" />
   <script>
     // Minimal client data for the Works section — edit here to update the site.
     const WORKS = [
@@ -108,25 +164,82 @@
   </script>
 </head>
 <body class="antialiased grad">
+  <a href="#hero-title" class="fixed left-4 top-4 z-50 -translate-y-20 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black shadow-lg focus:translate-y-0 focus:outline-none">Skip to main content</a>
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-[color:var(--bg)]/85 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-8 h-16 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-3">
+      <a href="#top" class="flex items-center gap-3" aria-label="QloudSound home">
         <img src="images/qloudsound_over_dark.svg" alt="QloudSound — The Intelligent Music Factory" class="h-7 w-auto" />
       </a>
-      <nav class="hidden md:flex items-center gap-10 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-        <a href="#about" class="transition hover:text-white">About</a>
-        <a href="#works" class="transition hover:text-white">Works</a>
-        <a href="#principles" class="transition hover:text-white">Principles</a>
-        <a href="#contact" class="transition hover:text-white">Contact</a>
+      <nav aria-label="Primary navigation" class="hidden md:flex">
+        <ul class="flex items-center gap-10 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+          <li><a href="#about" class="transition hover:text-white">About</a></li>
+          <li><a href="#works" class="transition hover:text-white">Works</a></li>
+          <li><a href="#principles" class="transition hover:text-white">Principles</a></li>
+          <li><a href="#contact" class="transition hover:text-white">Contact</a></li>
+        </ul>
       </nav>
-      <div class="hidden md:flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-white/50">
-        <a href="https://www.instagram.com/qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">Instagram</a>
-        <span class="text-white/30">/</span>
-        <a href="https://www.tiktok.com/@qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">TikTok</a>
-      </div>
+      <nav aria-label="Social links" class="hidden md:flex">
+        <ul class="social-links">
+          <li>
+            <a href="https://www.instagram.com/qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+                  <circle cx="12" cy="12" r="3.3"></circle>
+                  <circle cx="17" cy="7" r="1.2" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span class="sr-only">Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 3h3.3c.1 2.2 1.4 3.4 3.2 3.6v3.2c-1.2.1-2.3-.3-3.2-.9v6.2c0 4-2.4 6.1-5.7 6.1-3 0-5.4-2-5.4-5s2.3-5 5.4-5c.6 0 1.2.1 1.7.2V7.5c-2.9-.3-3.6-2.2-4-4.5h0V3h4.7Z"></path>
+                </svg>
+              </span>
+              <span class="sr-only">TikTok</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21.6 7.2c-.2-.7-.7-1.2-1.4-1.4C18.6 5.4 12 5.4 12 5.4s-6.6 0-8.2.4c-.7.2-1.2.7-1.4 1.4C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.7.7 1.2 1.4 1.4 1.6.4 8.2.4 8.2.4s6.6 0 8.2-.4c.7-.2 1.2-.7 1.4-1.4.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10.5 15.5v-7L16 12l-5.5 3.5Z"></path>
+                </svg>
+              </span>
+              <span class="sr-only">YouTube</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://open.spotify.com/artist/qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M8 10.5c2.3-1 5.7-.8 7.9.3" stroke-linecap="round"></path>
+                  <path d="M8.6 13.2c1.8-.8 4.3-.6 5.9.2" stroke-linecap="round"></path>
+                  <path d="M9.2 15.7c1.3-.6 3-.4 4 .2" stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="sr-only">Spotify</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://music.youtube.com/@qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M10.5 9.5v5l4-2.5-4-2.5z" fill="currentColor" stroke="none"></path>
+                </svg>
+              </span>
+              <span class="sr-only">YouTube Music</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <div class="hidden md:flex items-center gap-3">
-        <span class="tag">AI Post-Studio</span>
         <a href="#contact" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]">Initiate Brief</a>
       </div>
       <a href="#contact" class="md:hidden inline-flex items-center rounded-full bg-[color:var(--accent)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-black shadow-lg shadow-[color:var(--accent-soft)]/40">
@@ -136,8 +249,8 @@
   </header>
 
   <!-- HERO -->
-  <main id="top" class="relative">
-    <section class="relative overflow-hidden">
+  <main id="top" class="relative" role="main">
+    <section class="relative overflow-hidden" aria-labelledby="hero-title">
       <div aria-hidden class="absolute inset-0 -z-10">
         <div class="absolute inset-0 gridline opacity-10"></div>
         <div class="absolute -top-32 right-[-180px] h-[520px] w-[520px] rounded-full bg-[color:var(--accent-soft)] blur-[160px]"></div>
@@ -150,7 +263,7 @@
               <span class="tag">AI-native production house</span>
               <span class="text-xs uppercase tracking-[0.3em] text-white/50">Since 2025</span>
             </div>
-            <h1 class="title text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+            <h1 id="hero-title" class="title text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
               Sound architecture for <span class="text-[color:var(--accent)]">visionary</span> brands.
             </h1>
             <p class="text-lg text-white/70 max-w-2xl">
@@ -222,11 +335,11 @@
     </section>
 
     <!-- ABOUT / MANIFESTO -->
-    <section id="about" class="mx-auto max-w-7xl px-4 sm:px-8 py-20">
+    <section id="about" class="mx-auto max-w-7xl px-4 sm:px-8 py-20" aria-labelledby="about-title">
       <div class="grid gap-12 lg:grid-cols-12 items-start">
         <div class="lg:col-span-7 space-y-7">
           <span class="tag">Manifesto</span>
-          <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">We engineer music as infrastructure.</h2>
+          <h2 id="about-title" class="title text-3xl sm:text-4xl font-bold leading-tight">We engineer music as infrastructure.</h2>
           <p class="text-white/70 leading-relaxed">
             QloudSound is built for creators who expect instrumentation and data-science to co-exist. Every composition is treated like a product release:
             prototyped within neural environments, validated against emotional telemetry, and deployed with metadata engineered for algorithmic discovery.
@@ -289,11 +402,11 @@
     </section>
 
     <!-- WORKS -->
-    <section id="works" class="mx-auto max-w-7xl px-4 sm:px-8 py-20">
+    <section id="works" class="mx-auto max-w-7xl px-4 sm:px-8 py-20" aria-labelledby="works-title">
       <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div class="space-y-4">
           <span class="tag">Selected Works</span>
-          <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">Intelligent catalog, engineered to scale.</h2>
+          <h2 id="works-title" class="title text-3xl sm:text-4xl font-bold leading-tight">Intelligent catalog, engineered to scale.</h2>
           <p class="max-w-2xl text-sm sm:text-base text-white/65">
             Each release originates inside our neural sandbox, then graduates through human-grade mastering and metadata QA.
             Tap any card to experience the pipeline.
@@ -326,10 +439,10 @@
     </section>
 
     <!-- PRINCIPLES -->
-    <section id="principles" class="mx-auto max-w-7xl px-4 sm:px-8 py-20">
+    <section id="principles" class="mx-auto max-w-7xl px-4 sm:px-8 py-20" aria-labelledby="principles-title">
       <div class="space-y-4">
         <span class="tag">Principles</span>
-        <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">Human sense. Machine precision.</h2>
+        <h2 id="principles-title" class="title text-3xl sm:text-4xl font-bold leading-tight">Human sense. Machine precision.</h2>
         <p class="max-w-3xl text-sm sm:text-base text-white/65">
           Our framework eliminates guesswork. Every principle is a guardrail for collaboration — tuning the balance between experimentation and consistent delivery.
         </p>
@@ -354,12 +467,12 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="mx-auto max-w-7xl px-4 sm:px-8 pb-24">
+    <section id="contact" class="mx-auto max-w-7xl px-4 sm:px-8 pb-24" aria-labelledby="contact-title">
       <div class="panel rounded-3xl border border-white/10 p-8 sm:p-10">
         <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div class="space-y-4">
             <span class="tag">Private collaborations</span>
-            <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">Initiate a strategic sound program.</h2>
+            <h2 id="contact-title" class="title text-3xl sm:text-4xl font-bold leading-tight">Initiate a strategic sound program.</h2>
             <p class="max-w-2xl text-sm sm:text-base text-white/70">
               We partner with labels, studios, and brands operating on long horizons. Share your brief and our producers will architect the workflow.
             </p>
@@ -391,11 +504,66 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-8">
       <div>© <span id="y"></span> QloudSound. All rights reserved.</div>
       <div class="mt-2">We design sound — not just compose it.</div>
-      <div class="mt-4 flex flex-wrap justify-center gap-4 text-[11px] uppercase tracking-[0.2em] text-white/50">
-        <a href="https://www.instagram.com/qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">Instagram</a>
-        <span class="text-white/30">/</span>
-        <a href="https://www.tiktok.com/@qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">TikTok</a>
-      </div>
+      <nav aria-label="Footer social links" class="mt-4">
+        <ul class="social-links justify-center flex-wrap text-white/50">
+          <li>
+            <a href="https://www.instagram.com/qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+                  <circle cx="12" cy="12" r="3.3"></circle>
+                  <circle cx="17" cy="7" r="1.2" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span class="sr-only">Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 3h3.3c.1 2.2 1.4 3.4 3.2 3.6v3.2c-1.2.1-2.3-.3-3.2-.9v6.2c0 4-2.4 6.1-5.7 6.1-3 0-5.4-2-5.4-5s2.3-5 5.4-5c.6 0 1.2.1 1.7.2V7.5c-2.9-.3-3.6-2.2-4-4.5h0V3h4.7Z"></path>
+                </svg>
+              </span>
+              <span class="sr-only">TikTok</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21.6 7.2c-.2-.7-.7-1.2-1.4-1.4C18.6 5.4 12 5.4 12 5.4s-6.6 0-8.2.4c-.7.2-1.2.7-1.4 1.4C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.7.7 1.2 1.4 1.4 1.6.4 8.2.4 8.2.4s6.6 0 8.2-.4c.7-.2 1.2-.7 1.4-1.4.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10.5 15.5v-7L16 12l-5.5 3.5Z"></path>
+                </svg>
+              </span>
+              <span class="sr-only">YouTube</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://open.spotify.com/artist/qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M8 10.5c2.3-1 5.7-.8 7.9.3" stroke-linecap="round"></path>
+                  <path d="M8.6 13.2c1.8-.8 4.3-.6 5.9.2" stroke-linecap="round"></path>
+                  <path d="M9.2 15.7c1.3-.6 3-.4 4 .2" stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="sr-only">Spotify</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://music.youtube.com/@qloudsound" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M10.5 9.5v5l4-2.5-4-2.5z" fill="currentColor" stroke="none"></path>
+                </svg>
+              </span>
+              <span class="sr-only">YouTube Music</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </footer>
 
@@ -427,7 +595,28 @@
     "url": "https://qloudsound.com",
     "foundingDate": "2025",
     "genre": ["Electronic","Ambient","Cinematic"],
-    "email": "contact@qloudsound.com"
+    "email": "contact@qloudsound.com",
+    "logo": "https://qloudsound.com/images/qloudsound_icon.svg",
+    "image": "https://qloudsound.com/og-qloudsound.png",
+    "sameAs": [
+      "https://www.instagram.com/qloudsound",
+      "https://www.tiktok.com/@qloudsound",
+      "https://www.youtube.com/@qloudsound"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "QloudSound",
+    "url": "https://qloudsound.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://qloudsound.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 
