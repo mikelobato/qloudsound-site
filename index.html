@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QloudSound — The Intelligent Music Factory</title>
+  <meta name="description" content="QloudSound is a post-studio, AI-driven music factory. We design sound — not just compose it." />
+  <meta name="theme-color" content="#050506" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="images/qloudsound_icon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --bg:#050506;         /* near-black */
+      --bg-2:#0c1014;       /* deep panel */
+      --ink:#f8fafc;        /* off-white */
+      --muted:#94a3b8;      /* muted slate */
+      --accent:#2592d0;     /* electric cyan-blue */
+      --accent-soft:rgba(37,146,208,.18);
+      --ring:rgba(37,146,208,.45);
+    }
+    html,body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    .grad{
+      background:
+        radial-gradient(70% 70% at 15% 5%, rgba(37,146,208,.24) 0%, rgba(5,5,6,0) 60%),
+        radial-gradient(60% 60% at 85% 10%, rgba(148,163,184,.22) 0%, rgba(5,5,6,0) 55%);
+    }
+    .gridline{
+      background-image:
+        linear-gradient(rgba(148,163,184,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.12) 1px, transparent 1px);
+      background-size:80px 80px;
+    }
+    .glass{
+      background:linear-gradient(130deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      backdrop-filter:blur(18px);
+    }
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+    }
+    .ring-ql{box-shadow:0 0 0 2px var(--ring);}
+    .title{font-family:'Space Grotesk',Inter,system-ui,sans-serif;}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.35rem .65rem;
+      background:rgba(37,146,208,.16);
+      border:1px solid rgba(37,146,208,.35);
+      border-radius:999px;
+      color:var(--ink);
+      font-size:.72rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .mono{font-variant-ligatures:none;}
+    .shimmer{
+      background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.24) 50%, rgba(255,255,255,0) 100%);
+      background-size:220% 100%;
+      animation:shine 3s linear infinite;
+    }
+    @keyframes shine{from{background-position:220% 0} to{background-position:-220% 0}}
+    html{scroll-behavior:smooth}
+  </style>
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="QloudSound — The Intelligent Music Factory" />
+  <meta property="og:description" content="Post-studio, AI-driven. We design sound — not just compose it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-qloudsound.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script>
+    // Minimal client data for the Works section — edit here to update the site.
+    const WORKS = [
+      {
+        id: 'neural-bloom',
+        title: 'Neural Bloom',
+        year: 2025,
+        mood: ['ambient','cinematic'],
+        cover: 'https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=1200&auto=format&fit=crop',
+        audio: 'https://cdn.example.com/audio/neural-bloom.mp3',
+        credits: 'Written & produced by QloudSound',
+      },
+      {
+        id: 'synthetic-pulse',
+        title: 'Synthetic Pulse',
+        year: 2025,
+        mood: ['club','techno'],
+        cover: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=1200&auto=format&fit=crop',
+        audio: 'https://cdn.example.com/audio/synthetic-pulse.mp3',
+        credits: 'Produced by QloudSound',
+      },
+      {
+        id: 'lunar-echoes',
+        title: 'Lunar Echoes',
+        year: 2025,
+        mood: ['lo-fi','nocturnal'],
+        cover: 'https://images.unsplash.com/photo-1520975954732-35dd222996f2?q=80&w=1200&auto=format&fit=crop',
+        audio: 'https://cdn.example.com/audio/lunar-echoes.mp3',
+        credits: 'A QloudSound work',
+      },
+    ];
+  </script>
+</head>
+<body class="antialiased grad">
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[color:var(--bg)]/85 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="images/qloudsound_over_dark.svg" alt="QloudSound — The Intelligent Music Factory" class="h-7 w-auto" />
+      </a>
+      <nav class="hidden md:flex items-center gap-10 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+        <a href="#about" class="transition hover:text-white">About</a>
+        <a href="#works" class="transition hover:text-white">Works</a>
+        <a href="#principles" class="transition hover:text-white">Principles</a>
+        <a href="#contact" class="transition hover:text-white">Contact</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-white/50">
+        <a href="https://www.instagram.com/qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">Instagram</a>
+        <span class="text-white/30">/</span>
+        <a href="https://www.tiktok.com/@qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">TikTok</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <span class="tag">AI Post-Studio</span>
+        <a href="#contact" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]">Initiate Brief</a>
+      </div>
+      <a href="#contact" class="md:hidden inline-flex items-center rounded-full bg-[color:var(--accent)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-black shadow-lg shadow-[color:var(--accent-soft)]/40">
+        Contact
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="relative">
+    <section class="relative overflow-hidden">
+      <div aria-hidden class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 gridline opacity-10"></div>
+        <div class="absolute -top-32 right-[-180px] h-[520px] w-[520px] rounded-full bg-[color:var(--accent-soft)] blur-[160px]"></div>
+        <div class="absolute top-1/2 left-[-200px] h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-white/5 blur-[160px]"></div>
+      </div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-8 py-20 sm:py-28 lg:py-32">
+        <div class="grid gap-16 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7 space-y-8">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="tag">AI-native production house</span>
+              <span class="text-xs uppercase tracking-[0.3em] text-white/50">Since 2025</span>
+            </div>
+            <h1 class="title text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+              Sound architecture for <span class="text-[color:var(--accent)]">visionary</span> brands.
+            </h1>
+            <p class="text-lg text-white/70 max-w-2xl">
+              QloudSound designs, deploys, and maintains complete sonic ecosystems. From neural ideation to catalog-grade mastering,
+              every waveform is versioned, measurable, and ready for global release.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#works" class="inline-flex items-center justify-center rounded-full bg-[color:var(--accent)] px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black shadow-lg shadow-[color:var(--accent-soft)]/50 transition hover:brightness-110">Explore Works</a>
+              <a href="#about" class="inline-flex items-center justify-center rounded-full border border-white/15 px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]">Our Practice</a>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="flex items-start gap-3">
+                <div class="mt-1 h-6 w-6 flex items-center justify-center rounded-full border border-white/15 text-[color:var(--accent)] text-xs font-semibold">01</div>
+                <div>
+                  <div class="font-semibold text-white/90 uppercase tracking-[0.18em] text-[11px]">Autonomous Pipeline</div>
+                  <p class="mt-1 text-sm text-white/60">Elastic production loops with GPU-first render infrastructure.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="mt-1 h-6 w-6 flex items-center justify-center rounded-full border border-white/15 text-[color:var(--accent)] text-xs font-semibold">02</div>
+                <div>
+                  <div class="font-semibold text-white/90 uppercase tracking-[0.18em] text-[11px]">Catalog Intelligence</div>
+                  <p class="mt-1 text-sm text-white/60">Granular metadata, rights tracking, and adaptive distribution.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="panel rounded-3xl border border-white/10 p-8 shadow-[0_30px_80px_-40px_rgba(37,146,208,0.55)]">
+              <div class="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60">
+                <span>Pipeline Monitor</span>
+                <span>Realtime</span>
+              </div>
+              <div class="mt-6 space-y-6">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-white/60">Neural Writers</span>
+                    <span class="text-lg font-semibold text-[color:var(--accent)]">12 active</span>
+                  </div>
+                  <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-white/10">
+                    <div class="h-full w-3/4 rounded-full bg-[color:var(--accent)] shimmer"></div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div class="text-xs uppercase tracking-[0.25em] text-white/50">Latency</div>
+                    <div class="mt-2 text-2xl font-bold">42 ms</div>
+                    <div class="text-xs text-white/50">Render</div>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div class="text-xs uppercase tracking-[0.25em] text-white/50">Masters</div>
+                    <div class="mt-2 text-2xl font-bold">Hi-Res</div>
+                    <div class="text-xs text-white/50">Lossless</div>
+                  </div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs uppercase tracking-[0.25em] text-white/50">Next Release</span>
+                    <span class="text-xs text-white/50">Launch T-12h</span>
+                  </div>
+                  <div class="mt-3 text-lg font-semibold text-white/90">Synthetic Pulse / Phase II</div>
+                  <p class="mt-1 text-xs text-white/60">QC, mastering, metadata sync, distro push.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / MANIFESTO -->
+    <section id="about" class="mx-auto max-w-7xl px-4 sm:px-8 py-20">
+      <div class="grid gap-12 lg:grid-cols-12 items-start">
+        <div class="lg:col-span-7 space-y-7">
+          <span class="tag">Manifesto</span>
+          <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">We engineer music as infrastructure.</h2>
+          <p class="text-white/70 leading-relaxed">
+            QloudSound is built for creators who expect instrumentation and data-science to co-exist. Every composition is treated like a product release:
+            prototyped within neural environments, validated against emotional telemetry, and deployed with metadata engineered for algorithmic discovery.
+          </p>
+          <div class="grid gap-5 sm:grid-cols-2 text-sm text-white/70">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-xs uppercase tracking-[0.25em] text-white/50">Ownership</div>
+              <p class="mt-2 text-white/85">Full master + publishing control secured in private vault.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-xs uppercase tracking-[0.25em] text-white/50">Distribution</div>
+              <p class="mt-2 text-white/85">Streaming-first rollout with mirrored private archive.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-xs uppercase tracking-[0.25em] text-white/50">Collaborators</div>
+              <p class="mt-2 text-white/85">Invitation-only roster aligned on process discipline.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-xs uppercase tracking-[0.25em] text-white/50">Label</div>
+              <p class="mt-2 text-white/85">QloudSound — singular imprint for all releases.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="glass rounded-3xl border border-white/10 p-8">
+            <div class="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60">
+              <span>Snapshot</span>
+              <span>Revision 07</span>
+            </div>
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs uppercase tracking-[0.25em] text-white/50">Pipeline</div>
+                <div class="mt-2 text-2xl font-bold text-white">24/7</div>
+                <div class="text-xs text-white/60">Automated</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs uppercase tracking-[0.25em] text-white/50">Moods</div>
+                <div class="mt-2 text-2xl font-bold text-white">50+</div>
+                <div class="text-xs text-white/60">Curated</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs uppercase tracking-[0.25em] text-white/50">Bit depth</div>
+                <div class="mt-2 text-2xl font-bold text-white">32-bit</div>
+                <div class="text-xs text-white/60">Masters</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs uppercase tracking-[0.25em] text-white/50">API</div>
+                <div class="mt-2 text-2xl font-bold text-white">Internal</div>
+                <div class="text-xs text-white/60">Private</div>
+              </div>
+            </div>
+            <div class="mt-6 rounded-2xl border border-white/10 bg-[color:var(--accent-soft)]/60 p-5 text-sm text-white/80">
+              <div class="text-xs uppercase tracking-[0.25em] text-white/60">Contact</div>
+              <p class="mt-2">Strategic licensing & bespoke commissions only. Set your briefing call below.</p>
+              <a href="#contact" class="mt-4 inline-flex items-center gap-2 rounded-full bg-[color:var(--accent)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black hover:brightness-110">Schedule Session →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works" class="mx-auto max-w-7xl px-4 sm:px-8 py-20">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div class="space-y-4">
+          <span class="tag">Selected Works</span>
+          <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">Intelligent catalog, engineered to scale.</h2>
+          <p class="max-w-2xl text-sm sm:text-base text-white/65">
+            Each release originates inside our neural sandbox, then graduates through human-grade mastering and metadata QA.
+            Tap any card to experience the pipeline.
+          </p>
+        </div>
+        <div class="text-xs uppercase tracking-[0.3em] text-white/50">Updated programmatically</div>
+      </div>
+      <div id="worksGrid" class="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <template id="cardTpl">
+        <article class="group relative overflow-hidden rounded-3xl border border-white/10 bg-[color:var(--bg-2)]/80 backdrop-blur transition hover:-translate-y-1 hover:border-[color:var(--accent)]">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--accent)] to-transparent"></div>
+          <img class="h-56 w-full object-cover opacity-80 transition duration-500 group-hover:opacity-100" alt="Cover" />
+          <div class="p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="title text-xl font-semibold tracking-tight"></h3>
+              <span class="text-xs uppercase tracking-[0.2em] text-white/50 year"></span>
+            </div>
+            <p class="text-sm text-white/60 mood"></p>
+            <div class="flex flex-wrap gap-2">
+              <button class="play inline-flex items-center gap-2 rounded-full bg-[color:var(--accent)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:brightness-110">
+                Play
+              </button>
+              <button class="open inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]">
+                Details
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section id="principles" class="mx-auto max-w-7xl px-4 sm:px-8 py-20">
+      <div class="space-y-4">
+        <span class="tag">Principles</span>
+        <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">Human sense. Machine precision.</h2>
+        <p class="max-w-3xl text-sm sm:text-base text-white/65">
+          Our framework eliminates guesswork. Every principle is a guardrail for collaboration — tuning the balance between experimentation and consistent delivery.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="panel relative overflow-hidden rounded-3xl border border-white/10 p-6">
+          <div class="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--accent)] to-transparent"></div>
+          <div class="text-sm font-semibold text-white/90">Design over spontaneity</div>
+          <p class="mt-3 text-sm text-white/65">Rapid prototyping meets evaluative metrics so emotional intent is never left to chance.</p>
+        </div>
+        <div class="panel relative overflow-hidden rounded-3xl border border-white/10 p-6">
+          <div class="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--accent)] to-transparent"></div>
+          <div class="text-sm font-semibold text-white/90">Silence is part of the mix</div>
+          <p class="mt-3 text-sm text-white/65">Dynamics breathe in service of narrative. Space becomes an instrument, not an accident.</p>
+        </div>
+        <div class="panel relative overflow-hidden rounded-3xl border border-white/10 p-6">
+          <div class="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--accent)] to-transparent"></div>
+          <div class="text-sm font-semibold text-white/90">Metadata is music</div>
+          <p class="mt-3 text-sm text-white/65">We craft credits, stems, and context with the same intention as the mix so platforms instantly understand the work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mx-auto max-w-7xl px-4 sm:px-8 pb-24">
+      <div class="panel rounded-3xl border border-white/10 p-8 sm:p-10">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div class="space-y-4">
+            <span class="tag">Private collaborations</span>
+            <h2 class="title text-3xl sm:text-4xl font-bold leading-tight">Initiate a strategic sound program.</h2>
+            <p class="max-w-2xl text-sm sm:text-base text-white/70">
+              We partner with labels, studios, and brands operating on long horizons. Share your brief and our producers will architect the workflow.
+            </p>
+          </div>
+          <a href="mailto:contact@qloudsound.com" class="inline-flex items-center gap-3 rounded-full bg-[color:var(--accent)] px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black shadow-lg shadow-[color:var(--accent-soft)]/40 transition hover:brightness-110">
+            contact@qloudsound.com
+          </a>
+        </div>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 text-sm text-white/65">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-xs uppercase tracking-[0.25em] text-white/50">Response</div>
+            <div class="mt-2 text-white/85">Under 24 hours</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-xs uppercase tracking-[0.25em] text-white/50">Commission</div>
+            <div class="mt-2 text-white/85">Audio systems, generative scores, brand mnemonics</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-xs uppercase tracking-[0.25em] text-white/50">Location</div>
+            <div class="mt-2 text-white/85">Remote-first | Nodes in BCN / BER / NYC</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-10 text-center text-xs text-white/50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-8">
+      <div>© <span id="y"></span> QloudSound. All rights reserved.</div>
+      <div class="mt-2">We design sound — not just compose it.</div>
+      <div class="mt-4 flex flex-wrap justify-center gap-4 text-[11px] uppercase tracking-[0.2em] text-white/50">
+        <a href="https://www.instagram.com/qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">Instagram</a>
+        <span class="text-white/30">/</span>
+        <a href="https://www.tiktok.com/@qloudsound" target="_blank" rel="noopener" class="transition hover:text-white">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WORKS MODAL -->
+  <dialog id="modal" class="backdrop:bg-black/60 rounded-2xl p-0 w-[92vw] max-w-2xl bg-[color:var(--bg-2)] text-[color:var(--ink)] border border-white/10">
+    <div class="p-4 sm:p-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h3 id="mTitle" class="title text-xl font-bold"></h3>
+          <p id="mMeta" class="mt-1 text-sm text-white/60"></p>
+        </div>
+        <button id="mClose" class="rounded-xl border border-white/10 px-3 py-2 text-xs text-white/80 hover:bg-white/5">Close</button>
+      </div>
+      <div class="mt-4">
+        <img id="mCover" alt="Cover" class="w-full h-56 object-cover rounded-xl" />
+        <audio id="mAudio" class="mt-4 w-full" controls preload="none"></audio>
+        <p id="mCredits" class="mt-3 text-sm text-white/70"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- JSON-LD for Organization / MusicGroup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "QloudSound",
+    "description": "Post-studio, AI-driven music factory.",
+    "url": "https://qloudsound.com",
+    "foundingDate": "2025",
+    "genre": ["Electronic","Ambient","Cinematic"],
+    "email": "contact@qloudsound.com"
+  }
+  </script>
+
+  <!-- App script -->
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Render works grid
+    const grid = document.getElementById('worksGrid');
+    const tpl = document.getElementById('cardTpl');
+    const modal = document.getElementById('modal');
+    const mTitle = document.getElementById('mTitle');
+    const mMeta = document.getElementById('mMeta');
+    const mCover = document.getElementById('mCover');
+    const mAudio = document.getElementById('mAudio');
+    const mCredits = document.getElementById('mCredits');
+    const mClose = document.getElementById('mClose');
+
+    function render(){
+      grid.innerHTML = '';
+      WORKS.forEach(w => {
+        const node = tpl.content.cloneNode(true);
+        const img = node.querySelector('img');
+        img.src = w.cover; img.alt = `${w.title} cover`;
+        node.querySelector('h3').textContent = w.title;
+        node.querySelector('.year').textContent = w.year;
+        node.querySelector('.mood').textContent = w.mood.join(' · ');
+        node.querySelector('.play').addEventListener('click', () => {
+          openModal(w);
+          mAudio.play().catch(()=>{});
+        });
+        node.querySelector('.open').addEventListener('click', () => openModal(w));
+        grid.appendChild(node);
+      });
+    }
+
+    function openModal(w){
+      mTitle.textContent = w.title;
+      mMeta.textContent = `${w.year} • ${w.mood.join(' · ')}`;
+      mCover.src = w.cover; mCover.alt = `${w.title} cover`;
+      mAudio.src = w.audio;
+      mCredits.textContent = w.credits || '';
+      if(typeof modal.showModal === 'function'){ modal.showModal(); }
+      else { modal.setAttribute('open',''); }
+    }
+
+    mClose.addEventListener('click', () => {
+      if(typeof modal.close === 'function'){ modal.close(); } else { modal.removeAttribute('open'); }
+      mAudio.pause();
+    });
+
+    // accessibility: close on Esc
+    modal.addEventListener('cancel', (e)=>{ e.preventDefault(); mClose.click(); });
+
+    render();
+  </script>
+</body>
+</html>
