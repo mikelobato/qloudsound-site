@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "cf:build": "CLOUDFLARE=true npm run build && npx @cloudflare/next-on-pages@latest"
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "cf:build": "CLOUDFLARE=true npm run build && npx @cloudflare/next-on-pages@latest",
+  "cf:deploy": "npm run cf:build && npx wrangler deploy"
 },
   "dependencies": {
     "next": "^15.5.2",

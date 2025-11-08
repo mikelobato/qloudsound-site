@@ -1,14 +1,12 @@
 name = "qloudsound-site"
 main = ".vercel/output/static/_worker.js/index.js"
-
 account_id = "b7eb9a280f73e95d5d278026959c1a60"
 
 compatibility_date = "2024-11-08"
 compatibility_flags = ["nodejs_compat"]
 
-# Activa los logs en el dashboard y en 'wrangler tail'
+# Activa logs y tail
 logs = { enabled = true }
 
-# Puedes definir variables de entorno si las necesitas
 [vars]
 NODE_ENV = "production"
