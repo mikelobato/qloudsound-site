@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { IncomingForm } from 'formidable';
-import formidable from 'formidable';
+import formidable, { type Fields, type Files } from 'formidable';
 import { type StoredRequest } from '../../src/lib/storage';
 
 export const config = {
@@ -9,8 +8,6 @@ export const config = {
   }
 };
 
-type Fields = formidable.Fields;
-type Files = formidable.Files;
 
 function fieldValue(field: Fields[string]): string {
   if (!field) return '';
