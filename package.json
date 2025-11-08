@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cf:build": "npm install && npx @cloudflare/next-on-pages@1 build"
+    "cf:build": "npm run build && npx @cloudflare/next-on-pages@1"
   },
   "dependencies": {
     "formidable": "^3.5.2",
