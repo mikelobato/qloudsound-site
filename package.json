@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
   "cf:build": "CLOUDFLARE=true npm run build && npx @cloudflare/next-on-pages@latest",
-  "cf:deploy": "npm run cf:build && npx wrangler@latest pages deploy .vercel/output/static --project-name qloudsound-site --commit-dirty=true --environment production"
+"cf:deploy": "npm run cf:build && npx wrangler@latest pages deploy .vercel/output/static --project-name qloudsound-site --commit-dirty=true"
 },
   "dependencies": {
     "next": "^15.5.2",
