@@ -30,12 +30,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       filter: () => false
     });
 
-    const fields = await new Promise<SimpleFields>((resolve, reject) => {
-      form.parse(req, (err, formFields) => {
-        if (err) return reject(err);
-        resolve(formFields as SimpleFields);
-      });
+  const fields = await new Promise<SimpleFields>((resolve, reject) => {
+    form.parse(req, (err: any, formFields: Record<string, any>) => {
+      if (err) return reject(err);
+      resolve(formFields as SimpleFields);
     });
+  });
 
     const honeypot = fieldValue(fields.website);
     if (honeypot) {
