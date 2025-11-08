@@ -25,9 +25,9 @@ persist = true
 head_sampling_rate = 1
 
 [[routes]]
-pattern = "qloudsound.com/*"
+pattern = "qloudsound.com"
 custom_domain = true
 
 [[routes]]
-pattern = "www.qloudsound.com/*"
+pattern = "www.qloudsound.com"
 custom_domain = true
