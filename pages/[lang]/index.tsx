@@ -66,9 +66,6 @@ const socials = [
   }
 ];
 
-type Locale = 'en' | 'es';
-
-
 interface PageProps {
   locale: Locale;
 }
