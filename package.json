@@ -3,20 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint",
-  "cf:build": "CLOUDFLARE=true npm run build && npx @cloudflare/next-on-pages@latest",
-  "cf:deploy": "npx wrangler deploy --assets .vercel/output/static"
-},
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "cf:build": "npx @opennextjs/cloudflare build",
+    "cf:deploy": "npx wrangler deploy --assets .vercel/output/static"
+  },
   "dependencies": {
     "next": "^15.5.2",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.16",
     "@types/node": "^20.11.30",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
