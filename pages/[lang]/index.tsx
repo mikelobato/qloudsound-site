@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { COPY, type Copy, type Locale } from '../../src/content/site';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 
 declare global {
   interface Window {
@@ -10,7 +11,6 @@ declare global {
     __gtmLoaded?: boolean;
   }
 }
-import type { GetServerSideProps } from 'next';
 
 const socials = [
   {
@@ -83,8 +83,18 @@ export default function LocalePage({ locale }: PageProps) {
     setMessage('');
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const payload: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      if (typeof value === 'string') {
+        payload[key] = value;
+      }
+    });
     try {
-      const res = await fetch('/api/request', { method: 'POST', body: formData });
+      const res = await fetch('/api/request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
       const data = await res.json();
       if (!res.ok || !data?.ok) throw new Error();
       form.reset();
@@ -103,68 +113,63 @@ export default function LocalePage({ locale }: PageProps) {
         <meta name="description" content={copy.meta.description} />
       </Head>
 
-      <div className="min-h-screen bg-[#030409] text-white scroll-smooth">
+      <div className="min-h-screen overflow-x-hidden bg-[#030409] text-white scroll-smooth">
         <div className="pointer-events-none fixed inset-0 -z-10 opacity-60">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,146,208,0.3),transparent_55%)] animate-pulse-slow" />
         </div>
 
-        <header className="sticky top-0 z-50 border-b border-white/5 bg-transparent">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-6 py-4">
-            <div className="flex flex-shrink-0 items-center gap-3">
+        <header className="sticky top-0 z-50 border-b border-white/5 bg-transparent backdrop-blur-none">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
+            <div className="flex flex-1 items-center gap-3">
               <Link href={locale === 'es' ? '/es' : '/en'} className="inline-flex items-center" aria-label="QloudSound home">
-                <Image src="/images/qloudsound_over_dark.svg" alt="QloudSound" width={155} height={40} priority />
+                <Image src="/images/qloudsound_over_dark.svg" alt="QloudSound" width={145} height={36} priority />
               </Link>
-              <div className="lang-toggle" role="group" aria-label="Language selector">
-                <Link
-                  href="/en"
-                  className={`rounded-full px-3 py-1 text-[0.65rem] tracking-[0.2em] ${locale === 'en' ? 'bg-white text-black' : 'text-white/70'}`}
-                >
+              <div className="lang-toggle hidden sm:inline-flex" role="group" aria-label="Language selector">
+                <Link href="/en" className={`rounded-full px-3 py-1 text-[0.65rem] tracking-[0.2em] transition ${locale === 'en' ? 'bg-white text-black' : 'text-white/70'}`}>
                   EN
                 </Link>
-                <Link
-                  href="/es"
-                  className={`rounded-full px-3 py-1 text-[0.65rem] tracking-[0.2em] ${locale === 'es' ? 'bg-white text-black' : 'text-white/70'}`}
-                >
+                <Link href="/es" className={`rounded-full px-3 py-1 text-[0.65rem] tracking-[0.2em] transition ${locale === 'es' ? 'bg-white text-black' : 'text-white/70'}`}>
                   ES
                 </Link>
               </div>
             </div>
-            <div className="ml-auto flex flex-wrap items-center gap-3">
-              <div className="flex items-center gap-2">
-                {socials.map((social) => (
-                  <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="social-link" aria-label={social.name}>
-                    <span className="social-icon" aria-hidden="true">
-                      {social.icon}
-                    </span>
-                  </a>
-                ))}
-              </div>
+            <nav className="flex flex-1 flex-wrap items-center justify-end gap-3 text-sm font-medium">
               <a
                 href="#how"
-                className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-sm font-medium tracking-wide text-white/85 transition hover:border-[#2592d0] hover:text-[#2592d0]"
+                className="hidden rounded-full border border-white/15 px-4 py-2 text-white/80 transition hover:border-[#2592d0] hover:text-[#2592d0] sm:inline-flex"
               >
                 {copy.hero.ctaHow}
               </a>
               <a
                 href="#create"
-                className="inline-flex items-center rounded-full bg-[#2592d0] px-4 py-2 text-sm font-medium tracking-wide text-black shadow-lg shadow-[#2592d0]/40"
+                className="hidden items-center rounded-full bg-[#2592d0] px-5 py-2 text-black shadow-lg shadow-[#2592d0]/40 transition hover:brightness-110 sm:inline-flex"
               >
                 {copy.hero.ctaCreate}
               </a>
-            </div>
+              <div className="lang-toggle inline-flex sm:hidden" role="group" aria-label="Language selector">
+                <Link href="/en" className={`rounded-full px-3 py-1 text-[0.65rem] tracking-[0.2em] transition ${locale === 'en' ? 'bg-white text-black' : 'text-white/70'}`}>
+                  EN
+                </Link>
+                <Link href="/es" className={`rounded-full px-3 py-1 text-[0.65rem] tracking-[0.2em] transition ${locale === 'es' ? 'bg-white text-black' : 'text-white/70'}`}>
+                  ES
+                </Link>
+              </div>
+            </nav>
           </div>
         </header>
 
-        <section id="hero" className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+        <section
+          id="hero"
+          className="relative flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center overflow-hidden px-4 pt-28 pb-16 text-center sm:px-6 md:pt-32"
+        >
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(37,146,208,0.35),transparent_60%)] animate-pulse-slow" />
           </div>
-          <h1 className="title text-5xl font-semibold leading-tight sm:text-6xl lg:text-8xl">
-            {copy.hero.title[0]}
-            <br className="hidden sm:block" />
-            {copy.hero.title[1]}
+          <h1 className="title text-4xl font-semibold leading-[1.05] sm:text-6xl lg:text-7xl">
+            <span className="block">{copy.hero.title[0]}</span>
+            <span className="block text-white/90">{copy.hero.title[1]}</span>
           </h1>
-          <p className="mt-4 max-w-3xl text-lg text-white/75">{copy.hero.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-base text-white/75 sm:text-lg">{copy.hero.subtitle}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#how"
@@ -178,6 +183,15 @@ export default function LocalePage({ locale }: PageProps) {
             >
               {copy.hero.ctaCreate}
             </a>
+          </div>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            {socials.map((social) => (
+              <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="social-link" aria-label={social.name}>
+                <span className="social-icon" aria-hidden="true">
+                  {social.icon}
+                </span>
+              </a>
+            ))}
           </div>
         </section>
 
@@ -390,7 +404,12 @@ function CookieBanner({ copy }: { copy: Copy['cookies'] }) {
     </div>
   );
 }
-export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = () => ({
+  paths: [{ params: { lang: 'en' } }, { params: { lang: 'es' } }],
+  fallback: false
+});
+
+export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const langParam = typeof params?.lang === 'string' ? params.lang.toLowerCase() : 'en';
   const locale: Locale = langParam === 'es' ? 'es' : 'en';
   return { props: { locale } };

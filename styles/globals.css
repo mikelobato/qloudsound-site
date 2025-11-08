@@ -150,7 +150,6 @@ body {
 }
 
 .lang-toggle {
-  display: inline-flex;
   align-items: center;
   gap: 0.2rem;
   padding: 0.2rem;

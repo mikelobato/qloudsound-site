@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { COPY, type Locale } from '../../src/content/site';
-import type { GetServerSideProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 
 interface PageProps {
   locale: Locale;
@@ -48,7 +48,12 @@ export default function LegalPage({ locale }: PageProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = () => ({
+  paths: [{ params: { lang: 'en' } }, { params: { lang: 'es' } }],
+  fallback: false
+});
+
+export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const langParam = typeof params?.lang === 'string' ? params.lang.toLowerCase() : 'en';
   const locale: Locale = langParam === 'es' ? 'es' : 'en';
   return { props: { locale } };
