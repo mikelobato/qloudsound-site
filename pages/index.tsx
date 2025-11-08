@@ -1,31 +1,38 @@
-import type { GetServerSideProps } from 'next';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const SUPPORTED = ['en', 'es'] as const;
 type SupportedLocale = (typeof SUPPORTED)[number];
 
-function pickLocale(header?: string | null): SupportedLocale {
-  if (!header) return 'en';
-  const candidates = header
-    .split(',')
-    .map((part) => part.split(';')[0]?.trim()?.slice(0, 2).toLowerCase())
-    .filter(Boolean) as SupportedLocale[];
-
-  for (const locale of candidates) {
-    if (SUPPORTED.includes(locale)) return locale;
+function detectLocale(): SupportedLocale {
+  if (typeof window === 'undefined') {
+    return 'en';
   }
+
+  const stored = window.localStorage.getItem('ql-lang');
+  if (stored && SUPPORTED.includes(stored as SupportedLocale)) {
+    return stored as SupportedLocale;
+  }
+
+  const browser = window.navigator.language?.slice(0, 2).toLowerCase();
+  if (browser && SUPPORTED.includes(browser as SupportedLocale)) {
+    return browser as SupportedLocale;
+  }
+
   return 'en';
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const preferred = pickLocale(req.headers['accept-language']);
-  return {
-    redirect: {
-      destination: `/${preferred}`,
-      permanent: false
-    }
-  };
-};
-
 export default function IndexRedirect() {
-  return null;
+  const router = useRouter();
+
+  useEffect(() => {
+    const locale = detectLocale();
+    router.replace(`/${locale}`);
+  }, [router]);
+
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-[#030409] text-white">
+      <p className="text-sm text-white/60">Redirigiendo…</p>
+    </main>
+  );
 }
