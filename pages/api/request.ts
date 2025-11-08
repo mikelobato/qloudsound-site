@@ -11,7 +11,8 @@ export const config = {
 
 function fieldValue(field: Fields[string]): string {
   if (!field) return '';
-  return Array.isArray(field) ? String(field[0] ?? '') : String(field);
+  const value = Array.isArray(field) ? field[0] : field;
+  return value === undefined || value === null ? '' : String(value);
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -27,10 +28,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       filter: () => false
     });
 
-    const [fields, files] = await new Promise<[Fields, Files]>((resolve, reject) => {
+    const [fields] = await new Promise<[Fields]>((resolve, reject) => {
       form.parse(req, (err, formFields, formFiles) => {
         if (err) return reject(err);
-        resolve([formFields, formFiles]);
+        resolve([formFields]);
       });
     });
 
