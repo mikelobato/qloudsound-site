@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cf:build": "npx @cloudflare/next-on-pages@1 build"
+    "cf:build": "npm install && npx @cloudflare/next-on-pages@1 build"
   },
   "dependencies": {
     "next": "14.2.5",
