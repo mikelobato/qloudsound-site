@@ -34,8 +34,3 @@ custom_domain = true
 [[routes]]
 pattern = "www.qloudsound.com"
 custom_domain = true
-
-# Dominio interno de Cloudflare Workers (preview/staging)
-[[routes]]
-pattern = "qloudsound-site.holdinq.workers.dev"
-custom_domain = false
