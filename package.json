@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "cf:build": "npx @opennextjs/cloudflare build",
-    "cf:deploy": "npm run cf:build && npx wrangler deploy --config wrangler.toml"
+    "cf:deploy": "npm run cf:build && npx wrangler deploy --config wrangler.toml",
+    "postinstall": "node scripts/patch-react-edge.js"
   },
   "dependencies": {
     "next": "^15.5.2",
