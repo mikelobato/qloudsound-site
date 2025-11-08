@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import type { IncomingForm } from 'formidable';
 import formidable from 'formidable';
 import { type StoredRequest } from '../../src/lib/storage';
 
