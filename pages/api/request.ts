@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import formidable, { type Fields, type Files } from 'formidable';
+import formidable from 'formidable';
 import { type StoredRequest } from '../../src/lib/storage';
 
 export const config = {
@@ -8,9 +8,11 @@ export const config = {
   }
 };
 
+type SimpleField = string | number | boolean | (string | number | boolean)[] | undefined | null;
+type SimpleFields = Record<string, SimpleField>;
 
-function fieldValue(field: Fields[string]): string {
-  if (!field) return '';
+function fieldValue(field: SimpleField): string {
+  if (field === undefined || field === null) return '';
   const value = Array.isArray(field) ? field[0] : field;
   return value === undefined || value === null ? '' : String(value);
 }
@@ -28,10 +30,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       filter: () => false
     });
 
-    const [fields] = await new Promise<[Fields]>((resolve, reject) => {
-      form.parse(req, (err, formFields, formFiles) => {
+    const fields = await new Promise<SimpleFields>((resolve, reject) => {
+      form.parse(req, (err, formFields) => {
         if (err) return reject(err);
-        resolve([formFields]);
+        resolve(formFields as SimpleFields);
       });
     });
 
