@@ -2,8 +2,6 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { listRequests, getRequest, saveRequest } from '../../src/lib/storage';
 import type { StoredRequest } from '../../src/types/requests';
 
-export const runtime = 'edge';
-
 export default async function handler(req: NextRequest) {
   if (req.method === 'GET') {
     return handleGet(req);
