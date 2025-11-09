@@ -194,8 +194,10 @@ export function RequestForm({ translations }: { translations: any }) {
       <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle className="text-2xl">{t.successTitle}</DialogTitle>
-            <DialogDescription className="text-base pt-4">{t.successMessage}</DialogDescription>
+            <DialogTitle className="text-3xl font-bold text-[#2592d0] text-center">{t.successQueue}</DialogTitle>
+            <DialogDescription className="text-sm pt-4 text-center text-muted-foreground">
+              {t.successEmailNotice}
+            </DialogDescription>
           </DialogHeader>
           <Button onClick={handleCloseSuccess} className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white">
             {t.close}
