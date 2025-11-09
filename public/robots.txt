@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Block legal page from being indexed
+User-agent: *
+Disallow: /*/legal
+
+# Sitemap location
+Sitemap: https://www.qloudsound.com/sitemap.xml

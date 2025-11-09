@@ -1,0 +1,17 @@
+{
+  "name": "QloudSound",
+  "short_name": "QloudSound",
+  "description": "Where your ideas become sound - AI Music Creation",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#2592d0",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
