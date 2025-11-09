@@ -27,7 +27,7 @@ export function Hero({ translations, lang }: HeroProps) {
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-4">
           <div className="flex justify-center lg:flex-1 lg:justify-start">
-            <a href="/" className="flex items-center gap-2">
+            <a href={`/${lang}`} className="flex items-center gap-2">
               <Image
                 src="/qloudsound-dark.svg"
                 alt="QloudSound"
