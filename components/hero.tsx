@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import Image from "next/image"
-import { Globe } from "lucide-react"
+import { Globe, Menu } from "lucide-react"
 
 interface HeroProps {
   translations: any
@@ -10,6 +12,7 @@ interface HeroProps {
 }
 
 export function Hero({ translations, lang }: HeroProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const scrollToForm = () => {
     document.getElementById("request-form")?.scrollIntoView({ behavior: "smooth" })
   }
@@ -21,27 +24,12 @@ export function Hero({ translations, lang }: HeroProps) {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background via-background/95 to-background px-4 pt-24 pb-16 sm:pt-28">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/qloudsound-dark.svg"
-              alt="QloudSound"
-              width={180}
-              height={40}
-              className="h-8 w-auto dark:block hidden"
-            />
-            <Image
-              src="/qloudsound-light.svg"
-              alt="QloudSound"
-              width={180}
-              height={40}
-              className="h-8 w-auto block dark:hidden"
-            />
-            <div className="flex items-center gap-2 ml-4 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
-              <Globe className="w-4 h-4 text-muted-foreground" />
-              <a
-                href="/en"
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
+        <div className="container mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-4 lg:flex lg:items-center lg:justify-between">
+          <nav className="hidden items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1.5 lg:flex">
+            <Globe className="w-4 h-4 text-muted-foreground" />
+            <a
+              href="/en"
                 className={`px-2 py-0.5 text-sm font-medium rounded-md transition-colors ${
                   lang === "en"
                     ? "bg-[#2592d0] text-white"
@@ -61,41 +49,115 @@ export function Hero({ translations, lang }: HeroProps) {
               >
                 ES
               </a>
-            </div>
+            </nav>
+          <div className="flex justify-center lg:flex-1 lg:justify-center">
+            <a href="/" className="flex items-center gap-2">
+              <Image
+                src="/qloudsound-dark.svg"
+                alt="QloudSound"
+                width={180}
+                height={40}
+                className="hidden h-8 w-auto dark:block lg:block"
+              />
+              <Image
+                src="/qloudsound-light.svg"
+                alt="QloudSound"
+                width={180}
+                height={40}
+                className="block h-8 w-auto dark:hidden lg:hidden"
+              />
+            </a>
           </div>
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden items-center justify-end gap-3 lg:flex lg:flex-1">
             <Button variant="ghost" size="lg" onClick={scrollToHowItWorks}>
               {translations.howItWorks}
             </Button>
-            <Button size="lg" onClick={scrollToForm} className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white">
+            <Button size="lg" className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white" onClick={scrollToForm}>
               {translations.createSong}
             </Button>
           </div>
-          <div className="sm:hidden">
-            <Button size="sm" onClick={scrollToForm} className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white">
-              {translations.createSong}
-            </Button>
+
+          <div className="flex flex-1 items-center justify-end gap-2 lg:hidden">
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-background p-6">
+                <nav className="flex flex-col gap-4">
+                  <Button
+                    variant="ghost"
+                    className="justify-start text-base"
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      scrollToHowItWorks()
+                    }}
+                  >
+                    {translations.howItWorks}
+                  </Button>
+                  <Button
+                    className="justify-start bg-[#2592d0] text-white hover:bg-[#1e7ab8]"
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      scrollToForm()
+                    }}
+                  >
+                    {translations.createSong}
+                  </Button>
+                  <div className="flex items-center gap-2 rounded-full border border-border px-3 py-1.5">
+                    <Globe className="w-4 h-4 text-muted-foreground" />
+                    <a
+                      href="/en"
+                      className={`flex-1 text-center text-sm font-medium rounded-md transition-colors ${
+                        lang === "en"
+                          ? "bg-[#2592d0] text-white"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      EN
+                    </a>
+                    <a
+                      href="/es"
+                      className={`flex-1 text-center text-sm font-medium rounded-md transition-colors ${
+                        lang === "es"
+                          ? "bg-[#2592d0] text-white"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      ES
+                    </a>
+                  </div>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </header>
 
       {/* Hero Content */}
-      <div className="container mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center text-center space-y-8 sm:space-y-10">
-        <h1 className="text-balance font-sans font-bold leading-tight text-4xl sm:text-5xl md:text-6xl lg:text-[82px] lg:leading-[1.05] tracking-tight">
+      <div className="container mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center text-center space-y-8 sm:space-y-10 px-4">
+        <h1 className="text-pretty font-sans font-bold leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-[88px] lg:leading-[1.02] tracking-tight">
           {translations.hero.title}
           <br />
           <span className="text-[#2592d0]">{translations.hero.titleAccent}</span>
         </h1>
-        <p className="text-pretty text-base sm:text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-pretty text-base sm:text-lg md:text-xl text-muted-foreground/90 max-w-2xl mx-auto px-2">
           {translations.hero.description}
         </p>
-        <div className="flex w-full flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-center">
-          <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={scrollToHowItWorks}>
+        <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-center">
+          <Button
+            variant="outline"
+            size="lg"
+            className="mx-auto w-auto min-w-[220px] px-8"
+            onClick={scrollToHowItWorks}
+          >
             {translations.howItWorks}
           </Button>
           <Button
             size="lg"
-            className="w-full sm:w-auto bg-[#2592d0] hover:bg-[#1e7ab8] text-white"
+            className="mx-auto w-auto min-w-[220px] px-8 bg-[#2592d0] hover:bg-[#1e7ab8] text-white"
             onClick={scrollToForm}
           >
             {translations.createSong}
