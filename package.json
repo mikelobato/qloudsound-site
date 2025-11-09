@@ -7,9 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cf:build": "npx @opennextjs/cloudflare build",
-    "cf:deploy": "npm run cf:build && npx wrangler deploy --config wrangler.toml",
-    "postinstall": "node scripts/patch-react-edge.js"
+    "cf:build": "CLOUDFLARE=true npm run build && npx @cloudflare/next-on-pages@latest",
+    "cf:deploy": "npm run cf:build && npx wrangler deploy --assets .vercel/output/static"
   },
   "dependencies": {
     "next": "^15.5.2",
@@ -20,10 +19,10 @@
     "@types/node": "^20.11.30",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
+    "@cloudflare/next-on-pages": "^1.13.16",
     "autoprefixer": "^10.4.17",
     "eslint": "^9.9.1",
     "eslint-config-next": "^15.5.2",
-    "@opennextjs/cloudflare": "^1.11.1",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { listRequests } from '../../../src/lib/storage';
 
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
