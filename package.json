@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cf:build": "CLOUDFLARE=true npm run build && npx @cloudflare/next-on-pages@latest",
+    "cf:build": "bash -c 'CLOUDFLARE=true npm run build && npx @cloudflare/next-on-pages@latest && printf \"_worker.js\\n\" > .vercel/output/static/.assetsignore'",
     "cf:deploy": "npm run cf:build && npx wrangler deploy --assets .vercel/output/static"
   },
   "dependencies": {
