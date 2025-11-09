@@ -12,8 +12,8 @@ const translations = {
     hero: {
       title: "Where your ideas",
       titleAccent: "become sound.",
-      description:
-        "Describe your ideal track, mood, or lyrics and we'll craft it with AI + human mastering, then publish it on Spotify at no cost.",
+        description:
+        "Describe your ideal track, mood, or lyrics and we'll craft it with AI + human mastering, then publish it across streaming platforms at no cost.",
     },
     howItWorksSection: {
       title: "HOW IT WORKS",
@@ -31,7 +31,7 @@ const translations = {
       },
       step3: {
         title: "Publish & deliver",
-        description: "We release to Spotify, Apple Music, YouTube Music, and mirror assets in a private archive.",
+        description: "We release to major streaming platforms and mirror assets in a private archive.",
         bullets: ["File delivery: MP3 and lossless master", "We transferred creative direction"],
       },
     },
@@ -72,7 +72,8 @@ const translations = {
       close: "Close",
     },
     footer: {
-      tagline: "WHERE YOUR IDEAS BECOME SOUND — AI MUSIC FROM REAL PEOPLE'S REQUESTS",
+      tagline: "Where your ideas become sound",
+      subline: "AI music born from real briefs",
       legal: "Legal notice & privacy",
     },
   },
@@ -82,8 +83,8 @@ const translations = {
     hero: {
       title: "Donde tus ideas",
       titleAccent: "se convierten en sonido.",
-      description:
-        "Describe tu canción ideal, mood o letra y la fabricamos con IA + lado humano para publicarla en Spotify sin coste.",
+        description:
+        "Describe tu canción ideal, mood o letra y la fabricamos con IA + lado humano para publicarla en plataformas de streaming sin coste.",
     },
     howItWorksSection: {
       title: "¿CÓMO FUNCIONA?",
@@ -100,7 +101,7 @@ const translations = {
       },
       step3: {
         title: "Publicamos y entregamos",
-        description: "Lanzamos en Spotify, Apple Music, YouTube Music, reflejando los assets en un archivo privado.",
+        description: "Lanzamos en las principales plataformas y reflejamos los assets en un archivo privado.",
         bullets: ["Entrega de archivos: MP3 y máster sin pérdida", "Trasladamos la dirección creativa"],
       },
     },
@@ -141,7 +142,8 @@ const translations = {
       close: "Cerrar",
     },
     footer: {
-      tagline: "DONDE TUS IDEAS SE CONVIERTEN EN SONIDO — MÚSICA DE IA DE PETICIONES DE PERSONAS REALES",
+      tagline: "Donde tus ideas se convierten en sonido",
+      subline: "Música de IA nacida de briefs reales",
       legal: "Aviso legal y privacidad",
     },
   },

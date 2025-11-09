@@ -19,7 +19,7 @@ export function Hero({ translations, lang }: HeroProps) {
   }
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 pt-20 pb-16">
+    <section className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background via-background/95 to-background px-4 pt-24 pb-16 sm:pt-28">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -63,11 +63,16 @@ export function Hero({ translations, lang }: HeroProps) {
               </a>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <Button variant="ghost" onClick={scrollToHowItWorks}>
+          <div className="hidden sm:flex items-center gap-3">
+            <Button variant="ghost" size="lg" onClick={scrollToHowItWorks}>
               {translations.howItWorks}
             </Button>
-            <Button onClick={scrollToForm} className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white">
+            <Button size="lg" onClick={scrollToForm} className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white">
+              {translations.createSong}
+            </Button>
+          </div>
+          <div className="sm:hidden">
+            <Button size="sm" onClick={scrollToForm} className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white">
               {translations.createSong}
             </Button>
           </div>
@@ -75,26 +80,30 @@ export function Hero({ translations, lang }: HeroProps) {
       </header>
 
       {/* Hero Content */}
-      <div className="text-center max-w-4xl mx-auto space-y-6">
-        <h1 className="text-5xl md:text-7xl font-sans font-bold tracking-tight text-pretty leading-[1.1]">
+      <div className="container mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center text-center space-y-8 sm:space-y-10">
+        <h1 className="text-balance font-sans font-bold leading-tight text-4xl sm:text-5xl md:text-6xl lg:text-[82px] lg:leading-[1.05] tracking-tight">
           {translations.hero.title}
           <br />
           <span className="text-[#2592d0]">{translations.hero.titleAccent}</span>
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
+        <p className="text-pretty text-base sm:text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto">
           {translations.hero.description}
         </p>
-        <div className="flex items-center justify-center gap-4 pt-4">
-          <Button variant="outline" size="lg" onClick={scrollToHowItWorks}>
+        <div className="flex w-full flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-center">
+          <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={scrollToHowItWorks}>
             {translations.howItWorks}
           </Button>
-          <Button size="lg" onClick={scrollToForm} className="bg-[#2592d0] hover:bg-[#1e7ab8] text-white">
+          <Button
+            size="lg"
+            className="w-full sm:w-auto bg-[#2592d0] hover:bg-[#1e7ab8] text-white"
+            onClick={scrollToForm}
+          >
             {translations.createSong}
           </Button>
         </div>
 
         {/* Social Icons */}
-        <div className="flex items-center justify-center gap-4 pt-8">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-6 sm:pt-10">
           <a
             href="https://www.instagram.com/qloudsound"
             target="_blank"

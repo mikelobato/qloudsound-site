@@ -19,15 +19,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     ? "QloudSound - Donde tus ideas se convierten en sonido"
     : "QloudSound - Where your ideas become sound"
   const description = isEs
-    ? "Crea música con IA y masterización humana. Publicamos tu canción en Spotify sin coste durante nuestra fase experimental."
-    : "Create music with AI and human mastering. We publish your song on Spotify at no cost during our experimental phase."
+    ? "Crea música con IA y masterización humana. Publicamos tu canción en plataformas de streaming sin coste durante nuestra fase experimental."
+    : "Create music with AI and human mastering. We publish your song across streaming platforms at no cost during our experimental phase."
 
   return {
     title,
     description,
     keywords: isEs
-      ? "crear música, IA música, generar canciones, música gratis, Spotify, producción musical, QloudSound"
-      : "create music, AI music, generate songs, free music, Spotify, music production, QloudSound",
+      ? "crear música, IA música, generar canciones, música gratis, plataformas de streaming, producción musical, QloudSound"
+      : "create music, AI music, generate songs, free music, streaming platforms, music production, QloudSound",
     authors: [{ name: "QloudSound" }],
     creator: "QloudSound",
     publisher: "QloudSound",

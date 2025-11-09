@@ -16,7 +16,7 @@ const legalContent = {
       },
       service: {
         title: "About Our Service",
-        content: `QloudSound Create is an AI-powered music generation service. We create custom songs based on user requests using artificial intelligence technology combined with human review and mastering. The songs we generate are published on streaming platforms including Spotify, Apple Music, and YouTube Music at no cost to the user during our experimental phase.`,
+        content: `QloudSound Create is an AI-powered music generation service. We create custom songs based on user requests using artificial intelligence technology combined with human review and mastering. The songs we generate are published on leading streaming platforms at no cost to the user during our experimental phase.`,
       },
       rights: {
         title: "Intellectual Property & Rights",
@@ -46,7 +46,7 @@ const legalContent = {
       },
       service: {
         title: "Sobre Nuestro Servicio",
-        content: `QloudSound Create es un servicio de generación de música mediante inteligencia artificial. Creamos canciones personalizadas basadas en las solicitudes de los usuarios utilizando tecnología de IA combinada con revisión y masterización humana. Las canciones que generamos se publican en plataformas de streaming como Spotify, Apple Music y YouTube Music sin coste para el usuario durante nuestra fase experimental.`,
+        content: `QloudSound Create es un servicio de generación de música mediante inteligencia artificial. Creamos canciones personalizadas basadas en las solicitudes de los usuarios utilizando tecnología de IA combinada con revisión y masterización humana. Las canciones que generamos se publican en las principales plataformas de streaming sin coste para el usuario durante nuestra fase experimental.`,
       },
       rights: {
         title: "Propiedad Intelectual y Derechos",

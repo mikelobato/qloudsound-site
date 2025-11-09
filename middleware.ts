@@ -15,6 +15,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  if (pathname === "/") {
+    const acceptLanguage = request.headers.get("accept-language")?.toLowerCase() ?? ""
+    const targetLang = acceptLanguage.includes("es") ? "es" : "en"
+    const redirectUrl = new URL(`/${targetLang}`, request.url)
+    return NextResponse.redirect(redirectUrl)
+  }
+
   return NextResponse.next()
 }
 
