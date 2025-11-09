@@ -25,14 +25,14 @@ export function Hero({ translations, lang }: HeroProps) {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
-              src="/qloudsound-light.svg"
+              src="/qloudsound-dark.svg"
               alt="QloudSound"
               width={180}
               height={40}
               className="h-8 w-auto dark:block hidden"
             />
             <Image
-              src="/qloudsound-dark.svg"
+              src="/qloudsound-light.svg"
               alt="QloudSound"
               width={180}
               height={40}
