@@ -58,11 +58,10 @@ export function RequestForm({ translations }: { translations: any }) {
     setLoading(true)
 
     try {
-      const response = await fetch("https://api.qloudsound.com/api/request", {
+      const response = await fetch("https://api.qloudsound.com/public-site/requests", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Referer: "https://www.qloudsound.com",
           "User-Agent": navigator.userAgent,
         },
         body: JSON.stringify({
@@ -70,7 +69,6 @@ export function RequestForm({ translations }: { translations: any }) {
           email: formData.email,
           style: formData.style,
           description: formData.description,
-          consent: formData.consent ? "on" : "off",
           website: "",
         }),
       })

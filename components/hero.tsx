@@ -25,32 +25,8 @@ export function Hero({ translations, lang }: HeroProps) {
     <section className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background via-background/95 to-background px-4 pt-24 pb-16 sm:pt-28">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-4 lg:flex lg:items-center lg:justify-between">
-          <nav className="hidden items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1.5 lg:flex">
-            <Globe className="w-4 h-4 text-muted-foreground" />
-            <a
-              href="/en"
-                className={`px-2 py-0.5 text-sm font-medium rounded-md transition-colors ${
-                  lang === "en"
-                    ? "bg-[#2592d0] text-white"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
-              >
-                EN
-              </a>
-              <span className="text-border">•</span>
-              <a
-                href="/es"
-                className={`px-2 py-0.5 text-sm font-medium rounded-md transition-colors ${
-                  lang === "es"
-                    ? "bg-[#2592d0] text-white"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
-              >
-                ES
-              </a>
-            </nav>
-          <div className="flex justify-center lg:flex-1 lg:justify-center">
+        <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-4">
+          <div className="flex justify-center lg:flex-1 lg:justify-start">
             <a href="/" className="flex items-center gap-2">
               <Image
                 src="/qloudsound-dark.svg"
@@ -68,7 +44,7 @@ export function Hero({ translations, lang }: HeroProps) {
               />
             </a>
           </div>
-          <div className="hidden items-center justify-end gap-3 lg:flex lg:flex-1">
+          <div className="hidden items-center justify-end gap-3 lg:flex">
             <Button variant="ghost" size="lg" onClick={scrollToHowItWorks}>
               {translations.howItWorks}
             </Button>
@@ -76,6 +52,31 @@ export function Hero({ translations, lang }: HeroProps) {
               {translations.createSong}
             </Button>
           </div>
+
+          <nav className="hidden items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1.5 lg:flex">
+            <Globe className="w-4 h-4 text-muted-foreground" />
+            <a
+              href="/en"
+              className={`px-2 py-0.5 text-sm font-medium rounded-md transition-colors ${
+                lang === "en"
+                  ? "bg-[#2592d0] text-white"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              EN
+            </a>
+            <span className="text-border">•</span>
+            <a
+              href="/es"
+              className={`px-2 py-0.5 text-sm font-medium rounded-md transition-colors ${
+                lang === "es"
+                  ? "bg-[#2592d0] text-white"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              ES
+            </a>
+          </nav>
 
           <div className="flex flex-1 items-center justify-end gap-2 lg:hidden">
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
