@@ -36,7 +36,7 @@ export function Footer({ translations, lang }: { translations: any; lang: string
               </svg>
             </a>
             <a
-              href="https://www.youtube.com/@qloudsound"
+              href="https://www.youtube.com/channel/UCtwC6JHP73P2COtYD4hJi3A"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-muted hover:bg-[#2592d0] hover:text-white flex items-center justify-center transition-colors"
