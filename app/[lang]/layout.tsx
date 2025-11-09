@@ -6,6 +6,8 @@ import Script from "next/script"
 import "../globals.css"
 import { CookieBanner } from "@/components/cookie-banner"
 
+export const runtime = "edge"
+
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" })
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-display" })
 

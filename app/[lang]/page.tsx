@@ -5,8 +5,6 @@ import { WhyCreate } from "@/components/why-create"
 import { RequestForm } from "@/components/request-form"
 import { Footer } from "@/components/footer"
 
-export const runtime = "edge"
-
 const translations = {
   en: {
     howItWorks: "How it works",
