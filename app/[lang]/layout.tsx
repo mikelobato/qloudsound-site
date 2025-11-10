@@ -32,8 +32,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     creator: "QloudSound",
     publisher: "QloudSound",
     icons: {
-      icon: "/favicon.svg",
-      apple: "/favicon.svg",
+      icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+      ],
+      apple: "/favicon.png",
     },
     manifest: "/site.webmanifest",
     openGraph: {

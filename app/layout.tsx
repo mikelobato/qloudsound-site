@@ -19,9 +19,37 @@ export const metadata: Metadata = {
         url: '/favicon.svg',
         type: 'image/svg+xml',
       },
+      {
+        url: '/favicon.png',
+        type: 'image/png',
+        sizes: '512x512',
+      },
     ],
-    apple: '/favicon.svg',
-    shortcut: '/favicon.svg',
+    apple: '/favicon.png',
+    shortcut: '/favicon.png',
+  },
+  openGraph: {
+    title: 'Where your ideas become sound',
+    description: 'Custom AI-powered songs crafted with human producers and published to streaming platforms.',
+    url: 'https://www.qloudsound.com',
+    siteName: 'QloudSound',
+    images: [
+      {
+        url: 'https://www.qloudsound.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'QloudSound — Where your ideas become sound',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Where your ideas become sound',
+    description: 'Custom AI-powered songs crafted with human producers and published to streaming platforms.',
+    images: ['https://www.qloudsound.com/og-image.jpg'],
+    creator: '@qloudsound',
   },
 }
 
