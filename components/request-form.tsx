@@ -105,87 +105,82 @@ export function RequestForm({ translations }: { translations: any }) {
 
   return (
     <>
-      <section id="request-form" className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Left Column - Info */}
-            <div className="space-y-8">
-              <div>
-                <p className="text-sm text-[#2592d0] font-semibold mb-2">{t.title}</p>
-                <h2 className="text-3xl font-bold mb-4 text-balance">{t.subtitle}</h2>
-              </div>
-            </div>
+      <section id="request-form" className="bg-muted/30 px-4 py-20">
+        <div className="container mx-auto max-w-4xl space-y-8 text-center">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#2592d0]">{t.title}</p>
+            <h2 className="text-3xl font-bold md:text-4xl">{t.subtitle}</h2>
+            <p className="text-sm text-muted-foreground">{t.formHint}</p>
+          </div>
 
-            {/* Right Column - Form */}
-            <div className="bg-card border border-border rounded-lg p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">{t.nameLabel}</Label>
-                    <Input
-                      id="name"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">{t.emailLabel}</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                </div>
-
+          <div className="rounded-3xl border border-border bg-card p-8 text-left shadow-xl">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="style">{t.styleLabel}</Label>
+                  <Label htmlFor="name">{t.nameLabel}</Label>
                   <Input
-                    id="style"
+                    id="name"
                     required
-                    placeholder={t.stylePlaceholder}
-                    value={formData.style}
-                    onChange={(e) => setFormData({ ...formData, style: e.target.value })}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
                 </div>
-
                 <div className="space-y-2">
-                  <Label htmlFor="description">{t.descriptionLabel}</Label>
-                  <Textarea
-                    id="description"
-                    rows={5}
-                    placeholder={t.descriptionPlaceholder}
-                    value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  />
-                </div>
-
-                <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="consent"
+                  <Label htmlFor="email">{t.emailLabel}</Label>
+                  <Input
+                    id="email"
+                    type="email"
                     required
-                    checked={formData.consent}
-                    onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
-                  <label htmlFor="consent" className="text-sm text-muted-foreground leading-tight cursor-pointer">
-                    {t.consentLabel}
-                  </label>
                 </div>
+              </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-[#2592d0] hover:bg-[#1e7ab8] text-white disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={loading || !isFormValid()}
-                >
-                  {loading ? "..." : t.submitButton}
-                </Button>
+              <div className="space-y-2">
+                <Label htmlFor="style">{t.styleLabel}</Label>
+                <Input
+                  id="style"
+                  required
+                  placeholder={t.stylePlaceholder}
+                  value={formData.style}
+                  onChange={(e) => setFormData({ ...formData, style: e.target.value })}
+                />
+              </div>
 
-                <p className="text-xs text-muted-foreground text-center">{t.disclaimer}</p>
-              </form>
-            </div>
+              <div className="space-y-2">
+                <Label htmlFor="description">{t.descriptionLabel}</Label>
+                <Textarea
+                  id="description"
+                  rows={5}
+                  placeholder={t.descriptionPlaceholder}
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                />
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="consent"
+                  required
+                  checked={formData.consent}
+                  onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
+                />
+                <label htmlFor="consent" className="cursor-pointer text-sm leading-tight text-muted-foreground">
+                  {t.consentLabel}
+                </label>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-[#2592d0] text-white hover:bg-[#1e7ab8] disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={loading || !isFormValid()}
+              >
+                {loading ? "..." : t.submitButton}
+              </Button>
+
+              <p className="text-center text-xs text-muted-foreground">{t.disclaimer}</p>
+            </form>
           </div>
         </div>
       </section>

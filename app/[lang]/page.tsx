@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation"
 import { Hero } from "@/components/hero"
 import { HowItWorks } from "@/components/how-it-works"
-import { WhyCreate } from "@/components/why-create"
 import { RequestForm } from "@/components/request-form"
 import { Footer } from "@/components/footer"
 
@@ -16,45 +15,27 @@ const translations = {
         "Describe your ideal track, mood, or lyrics and we'll craft it with AI + human mastering, then publish it across streaming platforms at no cost.",
     },
     howItWorksSection: {
-      title: "HOW IT WORKS",
-      subtitle:
-        "From the moment you submit your brief, the request enters a tightly monitored pipeline that mixes automation with human review.",
-      step1: {
-        title: "Share the idea",
-        description: "Moodboard, voice reference, or a simple voice note are enough to capture your intention.",
-        bullets: ["Letter, video/audio reference", "Preferred energy, tempo, or instrumentation"],
-      },
-      step2: {
-        title: "Render & refine",
-        description: "Custom AI model output theme. Producers remix, add beats, and prepare mandatory.",
-        bullets: ["Guarantee publishing royalty", "Creative and paratextual stems"],
-      },
-      step3: {
-        title: "Publish & deliver",
-        description: "We release to major streaming platforms and mirror assets in a private archive.",
-        bullets: ["File delivery: MP3 and lossless master", "We transferred creative direction"],
-      },
-    },
-    whyCreate: {
-      title: "Why QloudSound Create exists",
-      description:
-        "We wanted a zero-friction way for anyone to brief a professional or indie pipeline without budgets or middle layers.",
-      feature1: {
-        title: "Zero cost publishing",
-        description: "You brief, we generate, we publish. Experimental phase covers DMP fees.",
-      },
-      feature2: {
-        title: "Human + IA workflow",
-        description: "AI writes speed, humans ensure taste, mix, criteria, and metadata are impeccable.",
-      },
-      feature3: {
-        title: "Full hand back",
-        description: "Receive master, stems, and release links delivered once the track is live.",
-      },
+      title: "How it works",
+      subtitle: "Tell us what you want and we ship the song.",
+      steps: [
+        {
+          title: "Send your idea",
+          description: "Share mood, references, or a quick voice note so we capture the vibe.",
+        },
+        {
+          title: "We build the song",
+          description: "AI drafts the base and the team polishes it until it feels right.",
+        },
+        {
+          title: "We publish and deliver",
+          description: "We push it live on streaming platforms and send you the files to keep.",
+        },
+      ],
     },
     form: {
-      title: "SUBMIT YOUR REQUEST",
-      subtitle: "The more context you share, the faster we can turn around a song ready for streaming.",
+      title: "Request your track",
+      subtitle: "A short brief is all we need to get started.",
+      formHint: "We’ll reach out with the first preview in less than a week.",
       nameLabel: "Name / Project *",
       emailLabel: "Email *",
       styleLabel: "Style or genre *",
@@ -89,44 +70,27 @@ const translations = {
         "Describe tu canción ideal, mood o letra y la fabricamos con IA + lado humano para publicarla en plataformas de streaming sin coste.",
     },
     howItWorksSection: {
-      title: "¿CÓMO FUNCIONA?",
-      subtitle: "Tu brief entra en un pipeline vigilado donde combinamos automatización con revisión humana.",
-      step1: {
-        title: "Comparte la idea",
-        description: "Moodboard, referencia o una simple nota de voz bastan para fijar tu intención.",
-        bullets: ["Letra, video/referencia sonora", "Energía, tempo o instrumentos preferidos"],
-      },
-      step2: {
-        title: "Generamos y refinamos",
-        description: "Salida de modelo IA personalizado. Productores remixan, añaden beats y preparan mandatarios.",
-        bullets: ["Garantizamos publicación en royalty", "Stems creativos y paratextuales"],
-      },
-      step3: {
-        title: "Publicamos y entregamos",
-        description: "Lanzamos en las principales plataformas y reflejamos los assets en un archivo privado.",
-        bullets: ["Entrega de archivos: MP3 y máster sin pérdida", "Trasladamos la dirección creativa"],
-      },
-    },
-    whyCreate: {
-      title: "Por qué existe Create",
-      description:
-        "Buscamos una vía sin fricción para que cualquiera pueda briefear un pipeline profesional o indie sin presupuestos ni capas intermediarias.",
-      feature1: {
-        title: "Publicación sin coste",
-        description: "Tú haces el brief, nosotros generamos y publicamos. La fase experimental cubre tarifas DMP.",
-      },
-      feature2: {
-        title: "Flujo IA + humano",
-        description: "La IA aporta velocidad, los humanos aseguran el gusto, mezcla, criterio, y metadatos impecables.",
-      },
-      feature3: {
-        title: "Entrega completa",
-        description: "Recibes máster, stems y enlaces del lanzamiento una vez esté activo.",
-      },
+      title: "Cómo funciona",
+      subtitle: "Nos cuentas la idea y te mandamos la canción.",
+      steps: [
+        {
+          title: "Cuéntanos la idea",
+          description: "Mood, referencias o una nota de voz para fijar el estilo.",
+        },
+        {
+          title: "Producimos el tema",
+          description: "La IA propone y el equipo lo deja redondo.",
+        },
+        {
+          title: "Publicamos y enviamos",
+          description: "Lo lanzamos en streaming y te mandamos los archivos.",
+        },
+      ],
     },
     form: {
-      title: "ENVÍA TU PEDIDO",
-      subtitle: "Cuanto más contexto compartas, más rápido convertimos tu idea en una canción lista para streaming.",
+      title: "Pide tu canción",
+      subtitle: "Un breve resumen basta para arrancar.",
+      formHint: "Te mandaremos un primer avance en menos de una semana.",
       nameLabel: "Nombre / Proyecto *",
       emailLabel: "Email *",
       styleLabel: "Estilo o género *",
@@ -172,7 +136,6 @@ export default async function LangPage({ params }: { params: Promise<{ lang: str
     <main className="min-h-screen">
       <Hero translations={t} lang={lang} />
       <HowItWorks translations={t} />
-      <WhyCreate translations={t} />
       <RequestForm translations={t} />
       <Footer translations={t} lang={lang} />
     </main>

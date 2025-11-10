@@ -10,25 +10,18 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const runtime = 'edge'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Where your ideas become sound',
+  description: 'QloudSound — Where your ideas become sound with AI + human mastering.',
+  generator: 'QloudSound',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
+        url: '/favicon.svg',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/favicon.svg',
+    shortcut: '/favicon.svg',
   },
 }
 

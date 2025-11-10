@@ -81,7 +81,12 @@ export function Footer({ translations, lang }: { translations: any; lang: string
             </div>
             <p className="text-base text-foreground">{t.tagline}</p>
             {t.subline && <p className="text-sm text-muted-foreground">{t.subline}</p>}
-            <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} QloudSound</p>
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} QloudSound ·{" "}
+              <a href="mailto:info@qloudsound.com" className="text-foreground/70 underline decoration-dotted">
+                info@qloudsound.com
+              </a>
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
